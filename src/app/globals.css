@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* 
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -18,4 +18,35 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+@layer utilities {
+  .nav__link {
+    @apply relative text-base font-medium w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-pink-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-right;
+  }
+
+  .menu-button-container {
+    @apply fixed lg:hidden flex cursor-pointer flex-col items-center z-[1] p-10 right-0 top-0;
+  }
+
+  .menu-button,
+  .menu-button::before,
+  .menu-button::after {
+    @apply block bg-black absolute h-[3px] w-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-sm;
+  }
+  .menu-button::before {
+    @apply content-[""] -mt-2;
+  }
+  .menu-button::after {
+    @apply content-[""] mt-2;
+  }
+  .menu-button-clicked::before {
+    @apply rotate-[405deg] bg-[rgb(255_0_0)] w-[45px] mt-0;
+  }
+  .menu-button-clicked {
+    background: rgba(255, 255, 255, 0);
+  }
+  .menu-button-clicked::after {
+    @apply rotate-[-405deg] w-[45px] mt-0;
+  }
 }
