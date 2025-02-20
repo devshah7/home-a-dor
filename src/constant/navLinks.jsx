@@ -1,19 +1,19 @@
 const navLinks = [
   {
     id: 1,
-    url: "#",
+    url: "./about",
     label: "About",
   },
   {
     id: 2,
-    url: "#",
+    url: "./products",
     label: "Products",
   },
   {
     id: 3,
-    url: "#",
+    url: "./contacts",
     label: "Contact",
   },
 ];
 
-export default navLinks
+export default navLinks;
