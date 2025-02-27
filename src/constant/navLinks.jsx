@@ -1,8 +1,8 @@
 const navLinks = [
   {
     id: 1,
-    url: "./about",
-    label: "About",
+    url: "./",
+    label: "Home",
   },
   {
     id: 2,

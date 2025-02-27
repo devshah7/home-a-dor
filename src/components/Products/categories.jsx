@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const Categories = () => {
   return (
-    <div className="mb-5">
+    <div className="mt-5 mb-5">
       {/* Categories */}
       <div className="flex flex-wrap gap-4 justify-evenly">
         {prodCat.map((cat, id) => {

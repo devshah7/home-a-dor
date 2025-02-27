@@ -6,7 +6,7 @@ const Products = () => {
   return (
     <>
       <Categories />
-      <hr/>
+      {/* <hr/> */}
       <Cards />
     </>
   );

@@ -8,7 +8,7 @@ import Image from "next/image";
 
 const Cards = () => {
   return (
-    <div className="m-10  text-center grid grid-cols-4 gap-4">
+    <div className="mx-20 my-10 text-center grid grid-cols-4 gap-10">
       <Card Img={<Image placeholder="blur" src={vase1} alt="Vase" />} />
       <Card Img={<Image placeholder="blur" src={vase2} alt="Vase" />} />
       <Card Img={<Image placeholder="blur" src={vase3} alt="Vase" />} />
