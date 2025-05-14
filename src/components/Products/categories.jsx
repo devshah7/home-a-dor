@@ -1,17 +1,28 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Category from "./category";
 import prodCat from "@/constant/prodCat";
-import Image from "next/image";
-// import vase1 from "../../public/images/vase/vase1.jpeg"
 
-const Categories = () => {
+const Categories = ({ onCategorySelect }) => {
+  const [activeCategory, setActiveCategory] = useState(null);
+
+  const handleCategoryClick = (category) => {
+    setActiveCategory(category);
+    onCategorySelect(category);
+  };
+
   return (
     <div className="mt-5 mb-5">
-      {/* Categories */}
       <div className="flex flex-wrap gap-4 justify-evenly">
-        {prodCat.map((cat, id) => {
-          return <Category key={id} element={cat} />;
-        })}
+        {prodCat.map((cat, id) => (
+          <Category
+            key={id}
+            element={cat}
+            isActive={activeCategory === cat}
+            onClick={() => handleCategoryClick(cat)}
+          />
+        ))}
       </div>
     </div>
   );

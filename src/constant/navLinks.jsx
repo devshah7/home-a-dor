@@ -6,11 +6,16 @@ const navLinks = [
   },
   {
     id: 2,
+    url: "./about",
+    label: "About",
+  },
+  {
+    id: 3,
     url: "./products",
     label: "Products",
   },
   {
-    id: 3,
+    id: 4,
     url: "./contacts",
     label: "Contact",
   },
