@@ -43,4 +43,8 @@ body {
   .menu-button-clicked::after {
     @apply rotate-[-405deg] w-[45px] mt-0;
   }
+
+  .responsive-card {
+    @apply max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto;
+  }
 }

@@ -16,17 +16,10 @@ const Products = () => {
 
   return (
     <div className="py-10 bg-gradient-to-b from-gray-100 to-gray-300 min-h-screen flex flex-col justify-center">
-      <h1 className="text-4xl font-serif font-bold text-center mb-10 text-gray-800">
+      <h1 className="text-3xl sm:text-4xl font-serif font-bold text-center mb-5 text-gray-800">
         Explore Our Products
       </h1>
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="mb-8">
-          <input
-            type="text"
-            placeholder="Search for products..."
-            className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-500"
-          />
-        </div>
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <Categories onCategorySelect={handleCategorySelect} />
         <Cards selectedCategory={selectedCategory} />
       </div>

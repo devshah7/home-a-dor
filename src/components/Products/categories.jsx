@@ -13,8 +13,8 @@ const Categories = ({ onCategorySelect }) => {
   };
 
   return (
-    <div className="mt-5 mb-5">
-      <div className="flex flex-wrap gap-4 justify-evenly">
+    <div className="mt-2 mb-2">
+      <div className="flex flex-wrap gap-2 sm:gap-4 justify-evenly sm:justify-center">
         {prodCat.map((cat, id) => (
           <Category
             key={id}

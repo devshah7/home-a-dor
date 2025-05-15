@@ -139,7 +139,7 @@ const Cards = ({ selectedCategory }) => {
     : products;
 
   return (
-    <div className="mx-20 my-10 text-center grid grid-cols-4 gap-10">
+    <div className="mx-2 sm:mx-5 md:mx-10 lg:mx-20 my-5 text-center flex flex-wrap justify-center gap-3 sm:gap-5">
       {filteredProducts.map((product, index) => (
         <Card
           key={index}
