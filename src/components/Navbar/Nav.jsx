@@ -4,6 +4,8 @@ import navLinks from "@/constant/navLinks";
 import Link from "next/link";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import logo from "../../../public/images/homeador_logo.png";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,91 +17,102 @@ const Nav = () => {
   return (
     <>
       {/* Navigation */}
-      <nav className="bg-white shadow-sm relative z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            <Link href="./">
-              <h1 className="text-2xl font-serif font-bold text-gray-900">
-                HOME A D'OR
-              </h1>
-            </Link>
+      <nav className="bg-white shadow-sm relative z-50 h-16 sm:h-20 md:h-24 flex items-center">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="flex justify-between items-center h-full">
+            {/* Logo */}
+            <div className="flex items-center w-1/6">
+              <Link href="/">
+                <Image
+                  src={logo}
+                  alt="Home A D'or Logo"
+                  className="w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24"
+                />
+              </Link>
+            </div>
 
-            {/* Desktop Menu */}
-            <div className="hidden sm:flex space-x-8">
-              {navLinks.map((link) => {
-                return (
-                  <Link
-                    href={link.url}
-                    key={link.id}
-                    className="text-gray-700 hover:text-gray-900"
-                  >
-                    {link.label}
-                  </Link>
-                );
-              })}
+            {/* Company Name and Subtitle */}
+            <div className="text-center w-2/3">
+              <Link href="/">
+                <h1 className="text-base sm:text-xl md:text-2xl lg:text-3xl font-serif font-extrabold text-gray-900">
+                  HOME A D'OR
+                </h1>
+              </Link>
+              <p className="hidden sm:block text-[10px] sm:text-xs md:text-base italic text-gray-600">
+                where every piece of décor tells a story
+              </p>
             </div>
 
             {/* Burger Menu Button */}
-            <button
-              className="sm:hidden p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500"
-              onClick={toggleMenu}
-              aria-expanded={isMenuOpen}
-              aria-label="Toggle menu"
-            >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+            <div className="flex justify-end w-1/6">
+              <button
+                className="p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-0"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-expanded={isMenuOpen}
+                aria-label="Toggle menu"
               >
-                {isMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </button>
+                <motion.svg
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  initial={{ rotate: 0 }}
+                  animate={{ rotate: isMenuOpen ? 90 : 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                >
+                  {isMenuOpen ? (
+                    <motion.path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                    />
+                  ) : (
+                    <motion.path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                    />
+                  )}
+                </motion.svg>
+              </button>
+            </div>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.2 }}
-              className="sm:hidden absolute top-16 inset-x-0 bg-white shadow-lg border-t border-gray-100"
-            >
-              <div className="px-4 pt-2 pb-3 space-y-1">
-                {navLinks.map((link) => {
-                  return (
-                    <Link
-                      href={link.url}
-                      key={link.id}
-                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-                      onClick={toggleMenu}
-                    >
-                      {link.label}
-                    </Link>
-                  );
-                })}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </nav>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 bg-white z-40 flex items-center justify-center"
+          >
+            <div className="space-y-4 text-center">
+              {navLinks.map((link) => (
+                <Link
+                  href={link.url}
+                  key={link.id}
+                  className="block text-sm sm:text-base md:text-xl font-medium text-gray-700 hover:text-gray-900"
+                  onClick={toggleMenu}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
